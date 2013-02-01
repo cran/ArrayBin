@@ -1,0 +1,3 @@
+binarize.array Binarization of numeric data arrays
+clusterDisc Function for obtaining binary representation of a numeric vector
+mskmeans Function for performing maximally-separated k-means clustering of a numeric vector

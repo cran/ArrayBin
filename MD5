@@ -1,0 +1,9 @@
+54366ab52901ff3c0c518f4445dd8604 *DESCRIPTION
+648ce0dbfcd649229b9871f71a61b34c *INDEX
+a030718ab2cc4b9ef3e884679da0b9ca *NAMESPACE
+38dee1eda83faa89d62cac077d4f4034 *R/binarize_array.R
+98974482db7f5521058638cbac46c07a *R/clusterDisc.R
+5b3255937114a347457c0ae4f7979167 *R/mskmeans.R
+77a9a0bbc1cf4427bfd3e6848253f16a *man/binarize_array.Rd
+6403a665046cbe4a1c0a6e41428570b2 *man/clusterDisc.Rd
+a1db00a2e50cc0e06423aba2da22df80 *man/mskmeans.Rd
