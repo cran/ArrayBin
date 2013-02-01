@@ -1,4 +1,4 @@
-binarize.array <- function(x,min.filter=NA,var.filter=0,fc.filter=0,log.base=NA,use.gap=FALSE){
+binarize.array <- function(x,min.filter=NA,var.filter=0,fc.filter=0,na.filter=FALSE,log.base=NA,use.gap=FALSE){
 
 	filter <- c()
 	if(!is.na(min.filter)){
@@ -22,6 +22,10 @@ binarize.array <- function(x,min.filter=NA,var.filter=0,fc.filter=0,log.base=NA,
 			filter <- c(filter,which(fcs<log(fc.filter,base=log.base)))
 		}
 	}
+	if(na.filter){
+		cat("filtering out all rows with missing values \n")
+		filter <- c(filter,which(apply(x,MARGIN=1,function(y)sum(is.na(y)))>0))
+	}
 
 	unfiltered <- setdiff(1:nrow(x),filter)
 	
@@ -29,5 +33,7 @@ binarize.array <- function(x,min.filter=NA,var.filter=0,fc.filter=0,log.base=NA,
 	cat(paste("applying cluster-based binarization to",length(unfiltered),"rows of data. This may take some time... \n"))
 	if(use.gap) cat("using gap-statistic to determine cluster number. if this takes too long, try setting 'use.gap=FALSE' \n")
 	output[unfiltered,] <- t(apply(x[unfiltered,],MARGIN=1,clusterDisc,use.gap=use.gap))
+	rownames(output) <- rownames(x)
+	colnames(output) <- colnames(x)
 	output
 }
